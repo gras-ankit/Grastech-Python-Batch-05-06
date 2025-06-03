@@ -1,0 +1,103 @@
+print('''This isha module is of version 2.2.2.0
+Welcome to Python Programming!!
+Clich here: https://www.pygame.org/contribute.html''')
+
+
+def greet_by_name(n):
+    print(f'Hello {n}, or bhai kya haal hai??')
+
+def bhai_ka_prime_number_check_hoga(number:int) -> None:
+    '''Bhai ye prime Number check karega, so number aap integer hi pass karna!!'''
+    if type(number) == int:
+        if number>= 2:
+            for i in range(2,number):
+                if number % i == 0:
+                    print('Not a Prime Number!!')
+                    break
+            else:
+                print('Prime Number!!')
+        else:
+            print('Number must be greater than or equal to 2!!')
+    else:
+        print('Number Must be Integer!!')
+
+
+def give_fibbo_seq(n = 2):
+    if type(n) == int:
+        fibbo = [0,1]
+        if n == 2:
+            return fibbo
+        elif n>2:
+            for i in range(n-2):
+                next_num = fibbo[-1] + fibbo[-2]
+                fibbo.append(next_num)
+            return fibbo
+            
+        else:
+            return 'Invalid Fibbo Range'
+    else:
+        return 'Invalid input!!'
+
+
+def introduce(**kwargs):
+    for key,value in kwargs.items():
+        if '_' in key:
+            print(f'My {key} is {value}'.replace('_',' ').title())
+        else:
+            print(f'My {key} is {value}'.title())
+
+
+
+def show_db(**kwargs):
+    import pandas as pd
+    data = kwargs
+    if type(data['name']) in [list,tuple]:
+        table = pd.DataFrame(data)
+    else:
+        table = pd.DataFrame(data,index = [1])
+
+    return table
+
+
+def phone_a_friend(name):
+    # Function ke andar jo bhi declare hoga wo local scope hoga
+    import time
+    import random
+    c = 1
+    print(f'Calling {name.upper()}📞',end = '')
+    while c <=5:
+        print('.',end = '')
+        time.sleep(1)
+        c += 1
+    print(f'\nThe correct Option is: {random.choice("abcd")}')
+
+def msg():
+    name = 'India'
+
+    def city_msg():
+        nonlocal name
+        name = 'Noida'
+        print(f'Msg 2: I love {name}')
+
+    city_msg()
+    print(f'Msg 1: I Love {name}')
+
+
+def give_one_by_one():
+    yield 'Gold Chain'
+    yield 'Silver Chain'
+    yield 'Iron Chain'
+    yield 'Phone'
+    yield 'Laptop'
+
+def facto(n):
+    ans = 1
+    for i in range(1,n+1):
+        ans *= i
+    return ans
+
+
+def class_bunk():
+    print('Class Bunk ho gaya!!')
+
+    
